@@ -28,7 +28,14 @@
             var nearest_station=document.getElementById('nearest-station').value;
             var direction=document.getElementById('direction').value;
             var required_line=document.getElementById('required-line').value;
-            alert("Inputed Data\nNearest Station: "+nearest_station+"\nDirection: "+direction+"\nRequired Line: "+required_line);
+            //alert("Inputed Data\nNearest Station: "+nearest_station+"\nDirection: "+direction+"\nRequired Line: "+required_line);
+            fetch("http://localhost:8080/stopPoints").then(async data => {
+              console.log("API Called")
+              let api_data=await data.json();
+              console.log(api_data)
+            }).catch(data=>{
+              console.log(data)
+            });
         }
     </script>
   </head>
@@ -63,7 +70,7 @@
     </nav>
     <main class="page landing-page">
       <section class="login-clean">
-        <form method="post" onsubmit="submitQuery(this)">
+        <form>
           <h2 class="sr-only">Form</h2>
           <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
           <input
@@ -97,7 +104,8 @@
               d-xl-flex
               justify-content-xl-center
             "
-            type="submit"
+            type="button"
+            onclick="submitQuery(this)"
             role="button"
             value="Find Trains"
             style="margin: 20px; text-align: center"
