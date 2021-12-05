@@ -1,12 +1,20 @@
-var express = require("express");
+var express = require('express');
 var app = express();
-var http = require("http");
-const cors=require("cors");
-const request = require("request");
-app.use(cors());
-app.get("/stopPoints", (req, res) => {
+
+var http = require('http');
+
+const request = require('request');
+
+var bodyParser = require('body-parser');
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
+
+app.set('view engine', 'ejs');
+app.use('/assets', express.static('assets'));
+
+app.get('/stopPoints', (req, res) => {
   request(
-    "https://api.tfl.gov.uk/Line/northern/StopPoints",
+    'https://api.tfl.gov.uk/Line/northern/StopPoints',
     { json: true },
     (err, response, body) => {
       if (err) {
@@ -17,6 +25,15 @@ app.get("/stopPoints", (req, res) => {
     }
   );
   
+});
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
+app.post('/find-trains', urlencodedParser, (req, res)=>{
+  console.log(req.body);
+  res.render('index');
 });
 
 

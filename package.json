@@ -10,9 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "http": "^0.0.1-security",
-    "request": "^2.88.2"
+    "npm": "^8.2.0",
+    "request": "^2.88.2",
+    "uninstall": "^0.0.0"
   }
 }
