@@ -32,14 +32,22 @@
                     <h2 class="text-info">Available Trains</h2>
                 </div>
                 <div class="block-content">
-                    <div class="faq-item">
-                        <h4 class="question">Train Name</h4>
-                        <div class="answer">
-                            <p>03:00 PM</p>
-                            <p>Required time to walk to Station: 10 min</p>
-                            <p>Please, Leave your home at 2:50 PM.</p>
+                    <% arrivalData.trains.forEach(function(train) { %>
+                        <div class="faq-item">
+                            <h4 class="question"><b>Towards:</b> <%= train.towards %></h4>
+                            <div class="answer">
+                                <p><b>Station Name:</b> <%= train.stationName %> </p>
+                                <p><b>Platform Name:</b> <%= train.platformName %></p>
+                                <p><b>Destination Name:</b> <%= train.destinationName %></p>
+                                <p><b>Line:</b> <%= train.lineName %></p>
+                                <p><b>Direction:</b> <%= train.direction %></p>
+                                <p><b>Current Location:</b> <%= train.currentLocation %></p>
+                                <p><b>Arrival Time:</b> <%= train.expectedArrival %></p>
+                                <p><b>Time to leave from Home:</b> <%= train.timeToLeaveHome %></p>
+                            </div>
                         </div>
-                    </div>
+                    <% }) %>
+                    
                     <div class="faq-item">
                         <h4 class="question">Train Name</h4>
                         <div class="answer">
